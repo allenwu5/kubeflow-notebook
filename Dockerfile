@@ -3,12 +3,19 @@ FROM $BASE_CONTAINER
 
 USER root
 
+# https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver16#ubuntu18
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list > /etc/apt/sources.list.d/mssql-release.list
+
 RUN apt-get update -y
+
+RUN ACCEPT_EULA=Y apt-get install msodbcsql18 mssql-tools18 -y
 
 # Install pyodbc https://stackoverflow.com/a/51894871
 RUN apt-get install g++ unixodbc-dev -y
 
 COPY requirements.txt .
+
 RUN pip install -r requirements.txt
 
 EXPOSE 8888
