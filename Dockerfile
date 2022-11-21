@@ -9,10 +9,14 @@ RUN curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.li
 
 RUN apt-get update -y
 
+# For MSSQL
 RUN ACCEPT_EULA=Y apt-get install msodbcsql18 mssql-tools18 -y
 
 # Install pyodbc https://stackoverflow.com/a/51894871
 RUN apt-get install g++ unixodbc-dev -y
+
+# For PostgreSQL
+RUN ACCEPT_EULA=Y apt-get install libpq-dev -y
 
 COPY requirements.txt .
 

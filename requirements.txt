@@ -1,1 +1,14 @@
+# https://learn.microsoft.com/zh-tw/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development?view=sql-server-ver16
 pyodbc==4.0.32
+
+# Database toolkit
+SQLAlchemy==1.4.17
+
+# PostgreSQL database adapter
+psycopg2-binary==2.8.6
+
+# SFTP
+paramiko==2.7.2
+
+# Progress
+tqdm==4.61.0
