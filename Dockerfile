@@ -22,6 +22,13 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
+RUN conda update -n base conda
+RUN conda config --set report_errors true
+# RUN conda install -c blazingsql -c rapidsai -c nvidia -c conda-forge -c defaults blazingsql
+RUN conda install dask-sql -c conda-forge
+RUN conda install -c rapidsai-nightly -c nvidia -c conda-forge \
+    cudf dask-cudf ucx-py ucx-proc=*=gpu cudatoolkit=11.5
+
 EXPOSE 8888
 
 ENV GRANT_SUDO=1

@@ -5,7 +5,7 @@ pyodbc==4.0.32
 SQLAlchemy==1.4.17
 
 # PostgreSQL database adapter
-psycopg2-binary==2.8.6
+psycopg2==2.8.6
 
 # SFTP
 paramiko==2.7.2
